@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Furget-Me-Not</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
-	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-</head>
-
-<body>
-
-	<!-- nav bar -->
-	<nav class="brown lighten-3">
-	    <div class="nav-wrapper container">
-	     	<h1 class="brand-logo">Furget-Me-Not</h1>
-	     	<!-- shows icons for nav links -->
-	    	<ul class="right hide-on-med-and-down">
-		        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-		        <li><a href="announcement.html"><i class="material-icons">announcements</i></a></li>
-	    	</ul>
-	    </div>
-	</nav>
+	<head>
+		<meta charset="UTF-8">
+		<title>Furget-Me-Not</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
+		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+	</head>
+	<body>
+		<!-- nav bar -->
+		<nav class="brown lighten-3">
+		    <div class="nav-wrapper container">
+		     	<h1 class="brand-logo">Furget-Me-Not</h1>
+		     	<!-- shows icons for nav links -->
+		    	<ul class="right hide-on-med-and-down">
+			        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
+			        <li><a href="announcement.html"><i class="material-icons">announcements</i></a></li>
+		    	</ul>
+		    </div>
+		</nav>
 
 	<!-- jumbotron -->
 
@@ -34,7 +33,13 @@
 		<p><a class="btn btn-primary btn-lg" href="#" role="button">Find my bestie!</a></p>
 		</div>	
 	</div>
-
+	
+	<div>
+	<h3>Map of Results</h3>
+        <div id="map"></div>
+        <div id="pets"></div>
+        <!-- <div id="map2"></div> -->
+	</div>
 	<!-- footer -->
 	<footer class="page-footer brown lighten-3">
 		<div class="footer-container row">
@@ -56,25 +61,21 @@
 
 		<div class="footer-copyright">
 			<div class="container">
-				© 2017 fighterjets
+				<p>© 2017 fighterjets</p>
 			</div>
 		</div>
 	</footer>
-
-
+<!-- link for google Maps API -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY&callback=markerMap">
+</script>
 <!-- link to jquery -->
 <script src="https://code.jquery.com/jquery.js"></script>
-
 <!-- for IE support -->
 <script src="bower_components/es6-promise/es6-promise.auto.min.js"></script> 
-
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
-
 <!-- link to js -->
-<script type="text/javascript" src ="javascript/app.js"></script>	
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<script type="text/javascript" src ="javascript/app.js"></script>
 </body>
 </html>
