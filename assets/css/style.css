@@ -15,7 +15,7 @@ main {
 }
 
 .jumbotron {
-	padding-top: 0px;
+	padding: 0;
 	background-image: url("../images/sad_pug.jpg");
 	background-color: "brown lighten-4";
 	background-size: 100%;
@@ -29,7 +29,8 @@ main {
 }
 
  h1 {
- 	padding-top: 0;
- 	margin-top: 0;
+ 	padding: 0;
+ 	margin: 0;
  }
+
 
