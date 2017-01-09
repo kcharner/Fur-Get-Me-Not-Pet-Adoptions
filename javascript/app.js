@@ -41,11 +41,12 @@ $.ajax({
         // var petPics = results[0].
         // var petDetails = results[0].
         // var petGender = results[0].
+        var petInfo = petName + petAge + petType;
         //using this for testing purposes
         console.log(petAge); 
         //Using below as test to append new div/pet details!
         //Incidentally, we should probably use Bootstrap's grid system to place this beside the map and also just in general to ensure nice formatting
-        $("#pets").append( "<p>" + petAge + "</p>" );
+        $("#pets").append( "<div>" + petInfo + "</div>" );
         },
     });
 
@@ -93,6 +94,7 @@ $.ajax({
       }
 
 //TO-DO List:
+//need to get dropdowns working on searchForm.html
 //need a homepage/refresh
 //we need to figure out how to sort and display by "last update"
 //we also need to figure out how to sort by age
