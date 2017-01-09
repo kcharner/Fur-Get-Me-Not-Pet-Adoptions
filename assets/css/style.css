@@ -14,3 +14,23 @@ main {
   flex: 1 0 auto;
 }
 
+.jumbotron {
+	padding: 0;
+	background-image: url("../images/sad_pug.jpg");
+	background-color: "brown lighten-4";
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.content{
+	width: 385px;
+	height: 400px;
+	float: left;
+}
+
+ h1 {
+ 	padding: 0;
+ 	margin: 0;
+ }
+
+
