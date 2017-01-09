@@ -1,3 +1,17 @@
+//Hiding map/results element on initial load of page
+$("#results").hide();
+
+//Function for hiding jumbotron and displaying map/results element on-click of "find me a bestie" btn
+function findPetsNow() {
+    $(".jumbotron").hide();
+    $("#results").show();
+}
+
+//Calling that function on-click
+$("#petFind").on("click", findPetsNow);
+
+//Gathering API data
+
 //First we are staging our variables for the Petfinder API
 
 //These are Petfinder API arguments needed to pull data to our site:
@@ -90,13 +104,14 @@ $.ajax({
       }
 
 //TO-DO List:
+//need a homepage/refresh button
 //we need to figure out how to sort and display by "last update"
 //we also need to figure out how to sort by age
 //input form needs to be finished
-//contact the shelter form needs to be created
+//contact the shelter form needs to be created - maybe use a modal window?
 //we need a set-timeout function for the markermap function
 //we need to figure out how to set multiple pins on the map for displaying multiple pet locations
 //we need to finish pulling data to variables in the petfinders ajax request on lines 31-40
-//we need hide/display functions for hiding the form/then hiding jumbotron and displaying form
+//DONE(we need hide/display functions for hiding the form/then hiding jumbotron and displaying form)
 //we should review our trello board to modify it and check our to-dos to catch anything we've missed so far
 
