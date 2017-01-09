@@ -1,14 +1,3 @@
-//Hiding map/results element on initial load of page
-$("#results").hide();
-
-//Function for hiding jumbotron and displaying map/results element on-click of "find me a bestie" btn
-function findPetsNow() {
-    $(".jumbotron").hide();
-    $("#results").show();
-}
-
-//Calling that function on-click
-$("#petFind").on("click", findPetsNow);
 
 //Gathering API data
 
@@ -104,7 +93,7 @@ $.ajax({
       }
 
 //TO-DO List:
-//need a homepage/refresh button
+//need a homepage/refresh
 //we need to figure out how to sort and display by "last update"
 //we also need to figure out how to sort by age
 //input form needs to be finished

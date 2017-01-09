@@ -22,18 +22,45 @@
 		    	</ul>
 		    </div>
 		</nav>
-
-	<!-- jumbotron -->
-
-	<div class="jumbotron">
-		<h1>Can-ine Come Home With You?</h1>
-		<div class="content center-align">
-			  <p>You are a GREAT human who deserves the unconditional love only a furgotten furiend can give!</p>
-			  <p>Our mission is to find furever homes for any and all animals in need of a loving family. We focus on pets that are picked last in gym class. They may be senior pets, have special needs, or have been waiting a long time for their furever home. Help today by clicking the button below!</p>
-		<p><a href="searchForm.html" class="btn btn-primary btn-lg" role="button" id="petFind">Find my bestie!</a></p>
-		</div>	
+		<form>
+  <div>
+    <label for="zipcode">Enter Your Zipcode</label>
+    <input type="text" class="form-control" id="userZip"> <!--we will need to use this ID to pull zip into javascript using jquery-->
+    <label for="selectPetType">Select A Pet Type</label>
+    <div class="dropdown"> <!--dropdown not working, pulled code from Bootstrap - need to see what's going on!--> 
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Cat/Dog
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    		<li>Cats</li>
+    		<li>Dogs</li>
+    		<li>Both</li>
+  		</ul>
 	</div>
+	<label for="selectPetGender">Select A Gender</label>
+	<div class="dropdown"> <!--dropdown not working-->
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Female/Male
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    		<li>Female</li>
+    		<li>Male</li>
+    		<li>Both</li>
+  		</ul>
+	</div>
+  </div>
 
+ 
+  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+</form>
+
+		<section class="col-lg-12">
+		<div id="results">
+			<h3>Map of Results</h3>
+        	<div id="map"></div>
+        	<div id="pets"></div> <!--to be used for appending pet data-->
+		</div>
+	</section>
 	<!-- footer -->
 	<footer class="page-footer brown lighten-3">
 		<div class="footer-container row">
@@ -59,6 +86,10 @@
 			</div>
 		</div>
 	</footer>
+<!-- link for google Maps API -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY&callback=markerMap">
+</script>
 <!-- link to jquery -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- for IE support -->
