@@ -6,17 +6,25 @@
 //These are Petfinder API arguments needed to pull data to our site:
 var petURL = "https://api.petfinder.com/pet.find?format=json";
 var petKey = "&key=2cefc690d24d8a6092439aa540dd7c2d";
-var searchLocation = "&location=08820"; // + (unNamed var here) - need to replace 08820 with user input data - this will have to be a variable set up later and pushed to here
+var searchLocation = "&location="; // + (unNamed var here) - need to replace 08820 with user input data - this will have to be a variable set up later and pushed to here
 var petOutput ="&output=full"
 var petCallBack = "&callback=?"
 
 //Directly below is the query URL created from variables initialized above, & where we'll need to add additional arguments related to the pets' info. petCallBack must always be last for this variable to work!
 var petQueryURL = petURL + petKey + searchLocation + petOutput + petCallBack;
 
+//WORK ON THIS TODAY - GETTING CORRECT DATA TO PUSH TO THESE VARIABLE
+
+//Conditionals for cat/dog preference will go here
 //Here I created additional variables to access later - the data contained here will be specific to the animals, and pulled from the API!
 var petStreet = "7 clinton ave" //example street
 var petCity = "edison " //example city
 var petState = "NJ" //example state
+
+//*********these next 3 lines are the start of the function I am trying to run on-click of the #submitBtn that currently isn't working
+// function petSearch() {
+//     $("#userZip").val(this).push(searchLocation);
+//     console.log(searchLocation);
 
 //sending request to Petfinder to retrieve information
 $.ajax({
@@ -24,33 +32,50 @@ $.ajax({
     data : {},
     url : petQueryURL,
     dataType: 'json',
-    success : function(response) {                
+    success : function(response) {  
+
         //we need to create a for-loop and append returned pets to page across all elements in the returned array
-        var results= response.petfinder.pets.pet;
-        var petName = results[0].name.$t;
-        var petAge = results[0].age.$t;
-        var petType = results[0].animal.$t;
-        // //we need to finish parsing out this info
-        // // var petBreed = results[0].breed;
-        var petEmail = results[0].contact.email.$t;
-        var petPhone = results[0].contact.phone.$t;
-        var petStreet = results[0].contact.address1.$t;
-        var petCity = results[0].contact.city.$t;
-        var petState = results[0].contact.state.$t;
-        var petDescription = results[0].description.$t;
-        var petLastUpdate = results[0].lastUpdate.$t;
-        var petPics = results[0].media.photos.photo[0];
-        var petDetails = results[0].options.option
-        var petGender = results[0].sex.$t;
-        var petInfo = petName + " " + petAge + " " + petType;
-        // //using this for testing purposes
-        // // console.log(petAge); 
-        // console.log(petGender);
+        var results = response.petfinder.pets.pet; //auto-pulling first 25 results?
+        console.log(results);
+
+        for (var i = 0; i < results.length; i++) {
+            var petName = results[i].name.$t;
+            var petAge = results[i].age.$t;
+            var petType = results[i].animal.$t;
+            var petGender = results[i].sex.$t;
+            var petInfo = petName + " " + petAge + " " + petType + " " + petGender;
+            console.log(petInfo);
+            var petEmail = results[i].contact.email.$t;
+            var petPhone = results[i].contact.phone.$t;
+            var petStreet = results[i].contact.address1.$t;
+            var petCity = results[i].contact.city.$t;
+            var petState = results[i].contact.state.$t;
+            var petDescription = results[i].description.$t;
+            var petLastUpdate = results[i].lastUpdate.$t;
+            // var petPics = [];
+            //     for (var y = 0; y < results[i].media.photos.photo.length; y++) {
+            //         petPics.push(results[i].media.photos.photo[y].$t);
+            //         console.log(petPics);
+            //         }
+            // var petDetails = [];
+            //     for (var z = 0; z < results[i].options.option.length; z++) {
+            //         petDetails.push(results[i].options.option[z].$t);
+            //         console.log(petDetails);
+            //         }
+            // var petBreed = [];
+            // console.log(petName + " " + petAge);
+            //     for (var x = 0; x < results[i].breeds.breed.length; x++) {
+            //         petBreed.push(results[i].breeds.breed[x].$t);
+            //         console.log(petBreed);
+            //         }
+            $("#petResponse").append( "<div class='petDetes'>" + petInfo + "</div>" + "<button id='contact'><a href='modal.html'>Contact</a></button");
+         }
         // //Using below as test to append new div/pet details!
-        // //Incidentally, we should probably use Bootstrap's grid system to place this beside the map and also just in general to ensure nice formatting
-        $("#petResponse").append( "<div class='petDetes'>" + petInfo + "</div>" + "<button id='contact'><a href='modal.html'>Contact</a></button");
         },
     });
+// }; //*****this line was closing the function started above called petSearch
+//******the line below is the on-click event for calling the function
+// $("#submitBtn").on("click", petSearch());
 
 //Now we are setting the stage for google Maps
 
@@ -96,15 +121,12 @@ $.ajax({
       }
 
 //TO-DO List:
-//need to get dropdowns working on searchForm.html - DONE
-//need a homepage/refresh
 //we need to figure out how to sort and display by "last update"
 //we also need to figure out how to sort by age
 //input form needs to be finished
-//contact the shelter form needs to be created - maybe use a modal window? - in process(Allen)
+//contact the shelter form needs to be created - maybe use a modal window? - in process
 //we need a set-timeout function for the markermap function
 //we need to figure out how to set multiple pins on the map for displaying multiple pet locations
 //we need to finish pulling data to variables in the petfinders ajax request on lines 31-40
-//DONE(we need hide/display functions for hiding the form/then hiding jumbotron and displaying form)
 //we should review our trello board to modify it and check our to-dos to catch anything we've missed so far
 
