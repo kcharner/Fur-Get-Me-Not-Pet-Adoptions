@@ -30,23 +30,25 @@ $.ajax({
         var petName = results[0].name.$t;
         var petAge = results[0].age.$t;
         var petType = results[0].animal.$t;
-        //we need to finish parsing out this info
-        // var petBreed = results[0].
-        // var petContact = results[0].
-        // var petStreet = results[0].
-        // var petCity = results[0].
-        // var petState = results[0].
-        // var petDescription = results[0].
-        // var petLastUpdate = results[0].
-        // var petPics = results[0].
-        // var petDetails = results[0].
-        // var petGender = results[0].
-        var petInfo = petName + petAge + petType;
-        //using this for testing purposes
-        console.log(petAge); 
-        //Using below as test to append new div/pet details!
-        //Incidentally, we should probably use Bootstrap's grid system to place this beside the map and also just in general to ensure nice formatting
-        $("#pets").append( "<div>" + petInfo + "</div>" );
+        // //we need to finish parsing out this info
+        // // var petBreed = results[0].breed;
+        var petEmail = results[0].contact.email.$t;
+        var petPhone = results[0].contact.phone.$t;
+        var petStreet = results[0].contact.address1.$t;
+        var petCity = results[0].contact.city.$t;
+        var petState = results[0].contact.state.$t;
+        var petDescription = results[0].description.$t;
+        var petLastUpdate = results[0].lastUpdate.$t;
+        var petPics = results[0].media.photos.photo[0];
+        var petDetails = results[0].options.option
+        var petGender = results[0].sex.$t;
+        var petInfo = petName + " " + petAge + " " + petType;
+        // //using this for testing purposes
+        // // console.log(petAge); 
+        // console.log(petGender);
+        // //Using below as test to append new div/pet details!
+        // //Incidentally, we should probably use Bootstrap's grid system to place this beside the map and also just in general to ensure nice formatting
+        $("#petResponse").append( "<div class='petDetes'>" + petInfo + "</div>" );
         },
     });
 

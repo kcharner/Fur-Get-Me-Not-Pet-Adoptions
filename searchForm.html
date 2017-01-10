@@ -26,23 +26,28 @@
   <div>
     <label for="zipcode">Enter Your Zipcode</label>
     <input type="text" class="form-control" id="userZip"> <!--we will need to use this ID to pull zip into javascript using jquery-->
-    
-   <div class="dropdown">
-					  <label for="sel1">Select a Pet Type</label>
-					  <select class="form-control" id="petType">
-					    <option value=1>Cats</option>
-					    <option value=2 selected>Dogs</option>
-					    <option value=3>Cats and Dogs</option>
-					  </select>
-					</div>
-	<div class="dropdown">
-					  <label for="sel2">Select a Gender</label>
-					  <select class="form-control" id="gender">
-					    <option value=1>Female</option>
-					    <option value=2 selected>Male</option>
-					    <option value=3>Female and Male</option>
-					  </select>
-					</div>
+    <label for="selectPetType">Select A Pet Type</label>
+    <div class="dropdown"> <!--dropdown not working, pulled code from Bootstrap - need to see what's going on!--> 
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Cat/Dog
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    		<li>Cats</li>
+    		<li>Dogs</li>
+    		<li>Both</li>
+  		</ul>
+	</div>
+	<label for="selectPetGender">Select A Gender</label>
+	<div class="dropdown"> <!--dropdown not working-->
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Female/Male
+    	<span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    		<li>Female</li>
+    		<li>Male</li>
+    		<li>Both</li>
+  		</ul>
+	</div>
   </div>
 
  
@@ -56,7 +61,7 @@
 	        </div>
         </section>
         <section class="col-lg-12">
-        	<div id="pets">
+        	<div id="petResponse">
         		<h3>Here are your furry furiends!</h3> <!--to be used for appending pet data-->
 			</div>
 	</section>
