@@ -4,17 +4,18 @@
 		<meta charset="UTF-8">
 		<title>Furget-Me-Not</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
-		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons|Patrick+Hand+SC" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
 	</head>
 	<body>
 		<!-- nav bar -->
-		<nav class="brown lighten-3">
-		    <div class="nav-wrapper container">
-		     	<h1 class="brand-logo">Furget-Me-Not</h1>
+		<nav class="brown lighten-3" id="header">
+		    <div class="nav-wrapper container" id="container">
+		     	<p class="brand-logo" id="projectName">Furget-Me-Not Pets</p>
 		     	<!-- shows icons for nav links -->
 		    	<ul class="right hide-on-med-and-down">
 			        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
@@ -26,16 +27,18 @@
 	<!-- jumbotron -->
 
 	<div class="jumbotron">
-		<div class="content center-align">
-			<h2>Can-ine Come Home With You?</h2>
-			  <p>You are a GREAT human who deserves the unconditional love only a furgotten furiend can give!</p>
-			  <p>Our mission is to find furever homes for any and all animals in need of a loving family. We focus on pets that are picked last in gym class. They may be senior pets, have special needs, or have been waiting a long time for their furever home. Help today by clicking the button below!</p>
-		<p><a href="searchForm.html" class="btn btn-primary btn-lg" role="button" id="petFind">Find my bestie!</a></p>
-		</div>	
+		<div id="missionState">
+			<div class="content center-align">
+				<h2 id="tagline">Can-ine Come Home With You?</h2>
+				<p>You are a GREAT human who deserves the unconditional love only a furgotten furiend can give!</p>
+				<p>Our mission is to find furever homes for any and all animals in need of a loving family. We focus on pets that are picked last in gym class. They may be senior pets, have special needs, or have been waiting a long time for their furever home. Help today by clicking the button below!</p>
+				<p><a href="searchForm.html" class="btn btn-primary btn-lg" role="button" id="petFind">Find my bestie!</a></p>
+			</div>	
+		</div>
 	</div>
 
 	<!-- footer -->
-	<footer class="page-footer brown lighten-3">
+	<footer class="page-footer brown lighten-3" id="footer">
 		<div class="footer-container row">
 			<div class="col l6 s12">
 				<h5 class="white-text">About Us</h5>
