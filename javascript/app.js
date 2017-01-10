@@ -48,7 +48,7 @@ $.ajax({
         // console.log(petGender);
         // //Using below as test to append new div/pet details!
         // //Incidentally, we should probably use Bootstrap's grid system to place this beside the map and also just in general to ensure nice formatting
-        $("#petResponse").append( "<div class='petDetes'>" + petInfo + "</div>" );
+        $("#petResponse").append( "<div class='petDetes'>" + petInfo + "</div>" + "<button id='contact'>Contact</button");
         },
     });
 
