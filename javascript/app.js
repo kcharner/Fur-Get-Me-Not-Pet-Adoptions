@@ -96,12 +96,12 @@ $.ajax({
       }
 
 //TO-DO List:
-//need to get dropdowns working on searchForm.html
+//need to get dropdowns working on searchForm.html - DONE
 //need a homepage/refresh
 //we need to figure out how to sort and display by "last update"
 //we also need to figure out how to sort by age
 //input form needs to be finished
-//contact the shelter form needs to be created - maybe use a modal window?
+//contact the shelter form needs to be created - maybe use a modal window? - in process(Allen)
 //we need a set-timeout function for the markermap function
 //we need to figure out how to set multiple pins on the map for displaying multiple pet locations
 //we need to finish pulling data to variables in the petfinders ajax request on lines 31-40
