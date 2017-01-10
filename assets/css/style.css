@@ -16,16 +16,18 @@ main {
 
 .jumbotron {
 	padding: 0;
-	background-image: url("../images/sad_pug.jpg");
+	background-image: url("../images/black_dog.jpeg");
 	background-color: "brown lighten-4";
 	background-size: 100%;
 	background-repeat: no-repeat;
+	height: 700px;
 }
 
 .content{
 	width: 385px;
 	height: 400px;
 	float: left;
+	color: white;
 }
 
  h1 {
