@@ -1,5 +1,8 @@
+$(".mapResults").hide(); //hiding map/results section on page-load
 
 $("#submitBtn").on("click", function(){
+    $("#userPetSearch").hide();
+    $(".mapResults").show();
     event.preventDefault()
     var petSearchVal = $("#userZip").val()
     var petURL = "https://api.petfinder.com/pet.find?format=json";
@@ -26,7 +29,8 @@ $("#submitBtn").on("click", function(){
             var petAge = results[i].age.$t;
             var petType = results[i].animal.$t;
             var petGender = results[i].sex.$t;
-            var petInfo = petName + " " + petAge + " " + petType + " " + petGender;
+             var petPics = results[i].media.photos.photo[i].$t;
+            var petInfo = petName + " " + petAge + " " + petType + " " + petGender + " " + petPics;
             console.log(petInfo);
             var petEmail = results[i].contact.email.$t;
             var petPhone = results[i].contact.phone.$t;
@@ -35,6 +39,10 @@ $("#submitBtn").on("click", function(){
             var petState = results[i].contact.state.$t;
             var petDescription = results[i].description.$t;
             var petLastUpdate = results[i].lastUpdate.$t;
+            var petPics = results[i].media.photos.photo[i].$t;
+
+            var petImage = $newPetDiv.attr("src", petPics);
+            console.log(petImage);
             // var petPics = [];
             //     for (var y = 0; y < results[i].media.photos.photo.length; y++) {
             //         petPics.push(results[i].media.photos.photo[y].$t);
