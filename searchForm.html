@@ -9,85 +9,79 @@
 		<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
 		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+		
 	</head>
 	<body>
 		<!-- nav bar -->
-		<nav class="brown lighten-3">
-		    <div class="nav-wrapper container">
-		     	<h1 class="brand-logo">Furget-Me-Not</h1>
-		     	<!-- shows icons for nav links -->
-		    	<ul class="right hide-on-med-and-down">
-			        <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-			        <li><a href="announcement.html"><i class="material-icons">announcements</i></a></li>
-			        <li><a href="project1.html">Home</a></li>
+		<nav class="brown lighten-3" id="header">
+		    <div class="nav-wrapper" id="container">
+		     	<p class="brand-logo" id="projectName"><a href="project1.html">Furget-Me-Not Pets</a></p>
+		    	<ul class="right hide-on-med-and-down"  id="nav-icons">
+		    		<li><a href="searchForm.html"><i class="material-icons">search</i></a></li>
+			        <li><a href="project1.html"><i class="material-icons">info_outline</i></a></li>
+			        <li><a href="subject.html"><i class="material-icons">subject</i></a></li>
+			        <li><a href="modal.html"><i class="material-icons">email</i></a></li>
 		    	</ul>
 		    </div>
 		</nav>
-		<form>
-  <div>
-
-  <!--WORK ON THIS TODAY - GETTING THE INPUTS CORRECT, CONDITIONALS FOR CATS/VS DOGS/VS BOTH-->
-   <label for="zipcode">Enter Your Zipcode</label>
-   <input type="text" class="form-control" id="userZip"> <!--we will need to use this ID to pull zip into javascript using jquery-->
-   
-  <div class="dropdown">
-                      <label for="sel1">Select a Pet Type</label>
-                      <select class="form-control" id="petType">
-                        <option value=1>Cats</option>
-                        <option value=2 selected>Dogs</option>
-                        <option value=3>Cats and Dogs</option>
-                      </select>
-                    </div>
-    <div class="dropdown">
-                      <label for="sel2">Select a Gender</label>
-                      <select class="form-control" id="gender">
-                        <option value=1>Female</option>
-                        <option value=2 selected>Male</option>
-                        <option value=3>Female and Male</option>
-                      </select>
-                    </div>
- </div>
-
- 
-  <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-</form>
-
+		<!--form for user's search parameters-->
+		<form id="userPetSearch">
+  			<div>
+				<label for="zipcode">Enter Your Zipcode</label>
+   				<input type="text" class="form-control" id="userZip">
+   				<div class="dropdown">
+                    <label for="sel1">Select a Pet Type</label>
+                    	<select class="form-control" id="petType">
+                        	<option value=1>Cats</option>
+                        	<option value=2 selected>Dogs</option>
+                        	<option value=3>Cats and Dogs</option>
+                    	</select>
+                </div>
+    			<div class="dropdown">
+                    <label for="sel2">Select a Gender</label>
+                     	<select class="form-control" id="gender">
+                        	<option value=1>Female</option>
+                        	<option value=2 selected>Male</option>
+                        	<option value=3>Female and Male</option>
+                      	</select>
+                </div>
+ 			</div>
+			<button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+		</form>
+		<!--MAP section for displaying results!-->
 		<section class="col-lg-12">
-			<div id="results">
+			<div class="mapResults" id="results">
 				<h3>Map of Results</h3>
 	        	<p id="map"></p>
 	        </div>
-        </section>
-        <section class="col-lg-12">
-        	<div id="petResponse">
+        	<div class="mapResults" id="petResponse">
         		<h3>Here are your furry furiends!</h3> <!--to be used for appending pet data-->
 			</div>
-	</section>
-	<!-- footer -->
-	<footer class="page-footer brown lighten-3">
-		<div class="footer-container row">
-			<div class="col l6 s12">
-				<h5 class="white-text">About Us</h5>
-				<p class="grey-text text-lighten-4">Our mission is to find forever homes for any and all animals in need of a loving family. </p>
+		</section>
+		<!-- footer -->
+		<footer class="page-footer brown lighten-3">
+			<div class="footer-container row">
+				<div class="col l6 s12">
+					<h5 class="white-text">About Us</h5>
+					<p class="grey-text text-lighten-4">Our mission is to find forever homes for any and all animals in need of a loving family. </p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Links</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Find A Furiend!</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Saved Searches</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
+					</ul>
+				</div>	
 			</div>
-
-			<div class="col l4 offset-l2 s12">
-				<h5 class="white-text">Links</h5>
-				<ul>
-					<li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Find A Furiend!</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Saved Searches</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
-				</ul>
-			</div>	
-		</div>
-
-		<div class="footer-copyright">
-			<div class="container">
-				<p>© 2017 fighterjets</p>
+			<div class="footer-copyright">
+				<div class="container">
+					<p>© 2017 fighterjets</p>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+
 <!-- link for google Maps API -->
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY&callback=markerMap">
