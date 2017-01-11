@@ -58,11 +58,20 @@ main {
  	background-color: #6D7993;
  }
 
- #container {
+ .container {
  	margin-left: 0px;
+ 	margin-right: 0px;
  	padding-left: 0px;
+ 	border-right: 0px;
  }
 
 #missionState {
 	margin-left: 80px;
 }
+
+#nav-icons {
+	margin-right: 0px;
+}
+
+
+
