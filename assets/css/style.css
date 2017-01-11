@@ -20,7 +20,7 @@ main {
 	background-color: "brown lighten-4";
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 1000px;
+	height: 800px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	border-top: 8px solid #6D7993;
@@ -37,10 +37,14 @@ main {
  	font-family: Patrick Hand SC;
  	font-weight: bold;
  	font-size: 60px;
- 	margin-top: 0px;
+ 	margin-top: 5px;
  	padding-top: 0px;
  	padding-left: 30px;
  }
+
+#header {
+	height: 80px;
+}
 
   #map, #map2 {
   /* width: 50%;*/
@@ -58,11 +62,31 @@ main {
  	background-color: #6D7993;
  }
 
- #container {
+ .footer-container {
+ 	border-top: 8px solid #6D7993;
+ }
+
+ .container {
  	margin-left: 0px;
+ 	margin-right: 0px;
  	padding-left: 0px;
+ 	border-right: 0px;
  }
 
 #missionState {
 	margin-left: 80px;
 }
+
+#nav-icons {
+	margin-top: 5px;
+	margin-right: 0px;
+	padding-right: 30px;
+}
+
+.footer-copyright {
+	padding-left: 5px;
+}
+
+
+
+
