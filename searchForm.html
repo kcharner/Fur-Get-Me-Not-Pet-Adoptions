@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Furget-Me-Not</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/searchStyle.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
-		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons|Patrick+Hand+SC" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
 		
 	</head>
@@ -24,40 +24,49 @@
 		    	</ul>
 		    </div>
 		</nav>
-		<!--form for user's search parameters-->
-		<form id="userPetSearch">
-  			<div>
-				<label for="zipcode">Enter Your Zipcode</label>
-   				<input type="text" class="form-control" id="userZip">
-   				<div class="dropdown">
-                    <label for="sel1">Select a Pet Type</label>
-                    	<select class="form-control" id="petType">
-                        	<option value=1>Cats</option>
-                        	<option value=2 selected>Dogs</option>
-                        	<option value=3>Cats and Dogs</option>
-                    	</select>
-                </div>
-    			<div class="dropdown">
-                    <label for="sel2">Select a Gender</label>
-                     	<select class="form-control" id="gender">
-                        	<option value=1>Female</option>
-                        	<option value=2 selected>Male</option>
-                        	<option value=3>Female and Male</option>
-                      	</select>
-                </div>
- 			</div>
-			<button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-		</form>
+		<div class="jumbotron" id="userPetSearch">
+			<h2 id="h2">Your purrfect pet is waiting!</h2>
+			<!--form for user's search parameters-->
+				<form>
+					<div class="container" id="form">
+			  			<div class="col-lg-6">
+
+							<label for="zipcode">Your Zipcode Goes Here!</label>
+			   				<input type="text" class="form-control" id="userZip">
+
+			   				<div class="dropdown">
+			                    <label for="sel1" id="catOrDog">What Kind of Pet Are You Looking For?</label>
+			                    	<select class="form-control" id="petType">
+			                        	<option value=1>Cat</option>
+			                        	<option value=2 selected>Dog</option>
+			                        	<option value=3>Show Me Cats & Dogs!</option>
+			                    	</select>
+			                </div>
+
+			    			<div class="dropdown">
+			                    <label for="sel2">Female or male?</label>
+			                     	<select class="form-control" id="gender">
+			                        	<option value=1>Female</option>
+			                        	<option value=2 selected>Male</option>
+			                        	<option value=3>Show Me Results for Both!</option>
+			                      	</select>
+			                </div>
+			                <br>
+			                <button type="submit" class="btn btn-primary" id="submitBtn">Search</button>
+	 					</div>
+	 				</div>
+				</form>
+		
+		</div>
 		<!--MAP section for displaying results!-->
 		<section class="col-lg-12">
-			<div class="mapResults" id="results">
-				<h3>Map of Results</h3>
-	        	<p id="map"></p>
-	        </div>
-        	<div class="mapResults" id="petResponse">
-        		<h3>Here are your furry furiends!</h3> <!--to be used for appending pet data-->
-			</div>
-		</section>
+            <div class="mapResults" id="results">
+                <h3>Here Are Your Furry Furiends!</h3>
+                <p id="map"></p>
+            </div>
+           <div class="mapResults" id="petResponse">
+            </div>
+        </section>
 		<!-- footer -->
 		<footer class="page-footer brown lighten-3">
 			<div class="footer-container row">

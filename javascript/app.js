@@ -1,158 +1,174 @@
 $(".mapResults").hide(); //hiding map/results section on page-load
 
 $("#submitBtn").on("click", function(){
+    event.preventDefault();
     $("#userPetSearch").hide();
-    $(".mapResults").show();
-    event.preventDefault()
-    var petSearchVal = $("#userZip").val()
-    var petURL = "https://api.petfinder.com/pet.find?format=json";
-    var petKey = "&key=2cefc690d24d8a6092439aa540dd7c2d";
-    var searchLocation = "&location=" + petSearchVal; // + (unNamed var here) - need to replace 08820 with user input data - this will have to be a variable set up later and pushed to here
-    var petOutput ="&output=full"
-    var petCallBack = "&callback=?"
+    $('#petResponse').show();
 
-    var petQueryURL = petURL + petKey + searchLocation + petOutput + petCallBack;
+    var petStreet;
+    var petCity;
+    var petState;
+    var petFullAddress;
+    var petSearchType;
+    var petSearchGen;
+    var petQueryURL;
+    var petSearchVal = $("#userZip").val();
 
-            var petStreet
-            var petCity
-            var petState
-    
+    if ($("#petType")["0"][0].selected == true) {
+        petSearchType = "&animal=cat";
+    }
+
+    else if ($("#petType")[0].selected == true) {
+        petSearchType = "&animal=dog";
+    }
+
+    else {
+        petSearchType = undefined;
+    }
+
+
+    if ($('#gender')["0"][0].selected == true) {
+            petSearchGen = "&sex=F"
+    }
+
+    else if ($('#gender')["0"][1].selected == true) {
+            petSearchGen = "&sex=M"
+    }
+        
+    else {
+            petSearchGen = undefined;
+    }
+
+    var petURL = "https://api.petfinder.com/pet.find?format=json" ;
+    var petKey = "&key=2cefc690d24d8a6092439aa540dd7c2d" ;
+    var searchLocation = "&location=" + petSearchVal ;
+    var petOutput ="&output=full&callback=?"
+
+    if (petSearchGen == undefined && petSearchType == undefined) {
+        petQueryURL = petURL + petKey + searchLocation + petOutput ;
+    }
+
+    else if (petSearchGen != undefined && petSearchType == undefined) {
+        petQueryURL = petURL + petKey + searchLocation + petSearchGen + petOutput;
+    }
+
+    else if (petSearchGen == undefined && petSearchType != undefined) {
+        petQueryURL = petURL + petKey + searchLocation + petSearchType + petOutput;
+    }
+
+    else {
+        petQueryURL = petURL + petKey + searchLocation + petSearchGen + petSearchType + petOutput;
+    }
+
     $.ajax({
-    type : 'GET',
-    data : {},
-    url : petQueryURL,
-    dataType: 'json',
-    success : function(response) {  
-        $("#petResponse").empty();
+        type: 'GET',
+        data: {},
+        url: petQueryURL,
+        dataType: 'json',
+        success: function(response) {  
+                 $("#petResponse").empty();
 
-        var results = response.petfinder.pets.pet; //auto-pulling first 25 results?
-        console.log(results);
+                var results = response.petfinder.pets.pet;
+                console.log(results)
 
-        for (var i = 0; i < results.length; i++) {
-            var petName = results[i].name.$t;
-            var petAge = results[i].age.$t;
-            var petType = results[i].animal.$t;
-            var petGender = results[i].sex.$t;
-            var petInfo = petName + " " + petAge + " " + petType + " " + petGender;
-            console.log(petInfo);
-            var petEmail = results[i].contact.email.$t;
-            var petPhone = results[i].contact.phone.$t;
-            var petStreet = results[i].contact.address1.$t;
-            var petCity = results[i].contact.city.$t;
-            var petState = results[i].contact.state.$t;
-            var petDescription = results[i].description.$t;
-            var petLastUpdate = results[i].lastUpdate.$t;
-            var petPics = results[i].media.photos.photo[i].$t;
-            var petImage = $("<img class='imagez'>").attr("src", petPics);
-            $("#petResponse").append(petImage);
-            //     for (var y = 0; y < results[i].media.photos.photo.length; y++) {
-            //         petPics.push(results[i].media.photos.photo[y].$t);
-            //         console.log(petPics);
-            //         }
-            // var petDetails = [];
-            //     for (var z = 0; z < results[i].options.option.length; z++) {
-            //         petDetails.push(results[i].options.option[z].$t);
-            //         console.log(petDetails);
-            //         }
-            // var petBreed = [];
-            // console.log(petName + " " + petAge);
-            //     for (var x = 0; x < results[i].breeds.breed.length; x++) {
-            //         petBreed.push(results[i].breeds.breed[x].$t);
-            //         console.log(petBreed);
-            //         }
-        var newPetDiv = $("<div class='petDetes'>");
-        var contactBtn = $("<button id='contact'><a href='modal.html'>Contact</a></button")
-        // petResults.addClass("petDetes");
-        var petResults = newPetDiv.text(petInfo).append(contactBtn);
-        $("#petResponse").append(petResults);
-        // $("#petResponse").append(petInfo + "<button id='contact'><a href='modal.html'>Contact</a></button");
-         }
-        },
-    });
+                for (var i = 0; i < results.length; i++) {
+                    var petName = results[i].name.$t;
+                    var petAge = results[i].age.$t;
+                    var petType = results[i].animal.$t;
+                    var petGender = results[i].sex.$t;
+                    var petInfo = petName + " " + petAge + " " + petType + " " + petGender;
+               
+                   
+                    petStreet = results[i].contact.address1.$t;
+                    petCity = results[i].contact.city.$t;
+                    petState = results[i].contact.state.$t;
+                    petFullAddress =  petStreet + ",+" + petCity + ",+" + petState;
+                    
 
+                    var petEmail = results[i].contact.email.$t;
+                    var petPhone = results[i].contact.phone.$t;
+                    var petDescription = results[i].description.$t;
+                    var petLastUpdate = results[i].lastUpdate.$t;
 
-//Gathering API data
+                                        //     for (var y = 0; y < results[i].media.photos.photo.length; y++) {
+                                        //         petPics.push(results[i].media.photos.photo[y].$t);
+                                        //         console.log(petPics);
+                                        //         }
+                                        // var petDetails = [];
+                                        //     for (var z = 0; z < results[i].options.option.length; z++) {
+                                        //         petDetails.push(results[i].options.option[z].$t);
+                                        //         console.log(petDetails);
+                                        //         }
+                                        // var petBreed = [];
+                                        // console.log(petName + " " + petAge);
+                                        //     for (var x = 0; x < results[i].breeds.breed.length; x++) {
+                                        //         petBreed.push(results[i].breeds.breed[x].$t);
+                                        //         console.log(petBreed);
+                                        //         }
 
-//These are Petfinder API arguments needed to pull data to our site:
-// var petURL = "https://api.petfinder.com/pet.find?format=json";
-// var petKey = "&key=2cefc690d24d8a6092439aa540dd7c2d";
-// var searchLocation = "&location=" + petSearchVal; // + (unNamed var here) - need to replace 08820 with user input data - this will have to be a variable set up later and pushed to here
-// var petOutput ="&output=full"
-// var petCallBack = "&callback=?"
+                    var petPics = results[i].media.photos.photo[0].$t;
 
-// //Directly below is the query URL created from variables initialized above, & where we'll need to add additional arguments related to the pets' info. petCallBack must always be last for this variable to work!
-// var petQueryURL = petURL + petKey + searchLocation + petOutput + petCallBack;
+                    var petContainer = $("<div class='col-md-3 fourAcross'>")
+                    var newPetDiv = $("<div class='petDetes'>");
+                    var petImage = $("<img class='imagez'>").attr("src", petPics).attr("data-address", petFullAddress);
+                    
+                    petContainer.append(newPetDiv).append(petImage);
+                    var contactBtn = $("<button id='contact'><a href='modal.html'>Contact</a></button");
+                    var petResults = newPetDiv.text(petInfo).append(contactBtn);
+                    $("#petResponse").append(petContainer);      
+             } // For loop
+        }, //AJAX function
+    }); // AJAX Request
 
-//WORK ON THIS TODAY - GETTING CORRECT DATA TO PUSH TO THESE VARIABLE
-
-//Conditionals for cat/dog preference will go here
-//Here I created additional variables to access later - the data contained here will be specific to the animals, and pulled from the API!
+}); // on click
 
 
-});
-var petStreet = "7 clinton ave" //example street
-var petCity = "edison " //example city
-var petState = "NJ" //example state
-var petPin = petStreet + petCity + petState;
+$(document).on("click", ".imagez" , function(){
+    $("#results").show();
+    $("#map").html("");
 
-// //Now we are setting the stage for google Maps
+    var petPin = $('img').data("address").replace(/\s+/g, '') ;
+   
+    var mapsURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+    var mapsKey = "&key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY";
+    var pinLocation = "&address=" + petPin;
+    var mapsQueryURL = mapsURL + pinLocation + mapsKey;
+        console.log(mapsQueryURL);
+    var gridLat, gridLong ;
 
-// //Formatting the pets' locations for google maps:
-// var searchLocation = petStreet + petCity + petState;
-
-//google Maps API arguments for displaying map and placing a location pin
-var mapsURL = "https://maps.googleapis.com/maps/api/geocode/json?";
-var mapsKey = "&key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY";
-var pinLocation = "&address=" + petPin;
-
-// ?address=1600+Amphitheatre+Parkway,+Mountain+View
-
-//Here is the query URL created using the variables directly above
-var mapsQueryURL = mapsURL + pinLocation + mapsKey;
-console.log(mapsQueryURL);
-
-//And here are some additional variables to access later, which will contain the coordinates of each pet's location
-var gridLat ;
-var gridLong ;
-
-//Retrieves data from google Maps for location of the pet (as supplied by Petfinder) so that we can pin it to the map
-$.ajax({
+    $.ajax({
     url: mapsQueryURL,
     method: "GET"
-    })
-    // After the data from the AJAX request comes back
-      .done(function(mapsData) {
+    }) //ajax header
+
+    .done(function(mapsData) {
         gridLat = mapsData.results[0].geometry.location.lat
         gridLong = mapsData.results[0].geometry.location.lng
-      });
+           var petMarker= {};
+            petMarker.lat = gridLat;
+            petMarker.lng = gridLong;
 
-var windowTimeout = setTimeout(function(){
-    var petMarker= {};
-        petMarker.lat = gridLat;
-        petMarker.lng = gridLong;
+            var map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 10,
+              center: petMarker
+            });
+            var marker = new google.maps.Marker({
+              position: petMarker,
+              map: map
+            });  
+      }); //.done function
+}); // image on click
 
-        var map = new google.maps.Map(document.getElementById("map"), {
+function markerMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
-          center: petMarker
+          center: uluru
         });
         var marker = new google.maps.Marker({
-          position: petMarker,
+          position: uluru,
           map: map
-        }); 
+        });
+      }
 
- }, 8000);
-//we need to create a setTimeout function for this following function (markerMap) to make sure it loads secondary to the ajax request! Otherwise it produces an occasional error
- // function markerMap() {
- //        var petMarker= {};
- //        petMarker.lat = gridLat;
- //        petMarker.lng = gridLong;
 
- //        var map = new google.maps.Map(document.getElementById('map'), {
- //          zoom: 4,
- //          center: petMarker
- //        });
- //        var marker = new google.maps.Marker({
- //          position: petMarker,
- //          map: map
- //        }); 
- //      }
