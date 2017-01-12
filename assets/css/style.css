@@ -14,6 +14,14 @@ main {
   flex: 1 0 auto;
 }
 
+.imagez {
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
 .jumbotron {
 	/*padding: 0;*/
 	background-image: url("../images/black_dog.jpeg");
