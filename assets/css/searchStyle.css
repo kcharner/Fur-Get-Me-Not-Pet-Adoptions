@@ -32,9 +32,10 @@ main {
 	background-color: "brown lighten-4";
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 950px;
+	height: 550px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
+	border-bottom: : 0px;
 	border-top: 8px solid #6D7993;
 }
 
@@ -46,13 +47,15 @@ main {
 	padding-top: 0px;
 	margin-left: 15px;
 	margin-bottom: 45px;
+
 }
 
 
 #form{
 	margin-left: 20px;
 	margin-top: 20px;
-	padding-left: 0px;
+	padding-left: 0px; 
+	width: 550px;
 
 }
 
@@ -83,7 +86,7 @@ main {
 #footer {
  	margin-top: 0px;
  	padding-top: 0px;
- 	background-color: #6D7993;
+ 	/*background-color: #6D7993;*/
 }
 
  /*.footer-container {
@@ -104,9 +107,12 @@ main {
 #nav-icons {
 	margin-top: 5px;
 	margin-right: 0px;
-	padding-right: 30px;
+	padding-right: 40px;
 }
 
+.footer-container {
+	border-top: 8px solid #6D7993;
+}
 .footer-copyright {
 	padding-left: 5px;
 }
@@ -127,6 +133,10 @@ main {
 	border-bottom: 0px;
 	margin: 0px;
 	padding: 0px;
+}
+
+.content {
+
 }
 
 .headerPet {
