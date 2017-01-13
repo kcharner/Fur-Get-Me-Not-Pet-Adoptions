@@ -53,7 +53,6 @@ else {
     petQueryURL = petURL + petKey + searchLocation + petSearchGen + petSearchType + petOutput;
 }
 
-
     $.ajax({
         type : 'GET',
         data : {},
@@ -71,7 +70,7 @@ else {
                             petSorted.petAge = petData.age.$t;
                             petSorted.petType = petData.animal.$t;
                             petSorted.petGender = petData.sex.$t;
-                            petSorted.petInfo = petSorted.petName + " " + petSorted.petAge + " " + petSorted.petType + " " + petSorted.petGender;
+                            petSorted.petDescription = petData.description.$t;
                        
                            
                             petSorted.petStreet = petData.contact.address1.$t;
@@ -79,10 +78,10 @@ else {
                             petSorted.petState = petData.contact.state.$t;
                             petSorted.petFullAddress =   petSorted.petStreet + ",+" +  petSorted.petCity + ",+" + petSorted.petState ;
                             
+                            petSorted.petInfo = petSorted.petAge + " " + petSorted.petType + " " + petSorted.petGender + " " + petSorted.petDescription + " " + petSorted.petFullAddress;
 
                             petSorted.petEmail = petData.contact.email.$t;
                             petSorted.petPhone = petData.contact.phone.$t;
-                            petSorted.petDescription = petData.description.$t;
                             petSorted.petLastUpdate = petData.lastUpdate.$t.split("T");
                             var petDate = petSorted.petLastUpdate
                             petSorted.updateTimeEpoch =  Math.floor(moment(petDate).valueOf());
@@ -91,16 +90,19 @@ else {
                             resultsPreSorted.push(petSorted);    
                 }); // end for each loop
             var resultSorted = resultsPreSorted.sort(function(a, b){return a.updateTimeEpoch-b.updateTimeEpoch});
-              console.log(resultSorted)
+            // console.log(resultSorted)
            for (var i = 0; i  < resultSorted.length; i++) {
                
                  var petContainer = $("<div class='col-md-3 fourAcross'>")
                  var newPetDiv = $("<div class='petDetes'>");
+                 var newPetName = $("<h3 class='headerPet'>")
                  var petImage = $("<img class='imagez'>").attr("src", resultSorted[i].petPics).attr("data-address", resultSorted[i].petFullAddress);
                     
-                 petContainer.append(newPetDiv).append(petImage);
+                 petContainer.append(newPetDiv).append(newPetName).append(petImage);
                  var petResults = newPetDiv.text(resultSorted[i].petInfo);
+                 var headerPet = newPetName.text(resultSorted[i].petName);
                  $("#petResponse").append(petContainer);
+                 console.log(resultSorted[i].updateTimeEpoch + " " + resultSorted[i].petName);
        }
         }, //AJAX function
     }); // AJAX Request
@@ -155,8 +157,3 @@ function markerMap() {
           map: map
         });
       }
-
-
-                    
-
-    
