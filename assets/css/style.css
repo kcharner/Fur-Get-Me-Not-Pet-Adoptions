@@ -4,22 +4,22 @@ html {
 
 
 body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  font-family: 'Raleway', sans-serif;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	font-family: 'Raleway', sans-serif;
 }
 
 main {
-  flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 .imagez {
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
+	width:  100px;
+	height: 100px;
+	background-position: 50% 50%;
+	background-repeat:   no-repeat;
+	background-size:     cover;
 }
 
 .jumbotron {
@@ -41,43 +41,42 @@ main {
 	color: white;
 }
 
- #logo {
- 	padding-left: 30px;
- }
+#logo {
+	padding-left: 30px;
+}
 
 #header {
 	height: 80px;
 }
 
-  #map, #map2 {
-  /* width: 50%;*/
-   height: 300px;
-   background-color: grey;
- }
+#map, #map2 {
+	/* width: 50%;*/
+	height: 300px;
+	background-color: grey;
+}
 
- #tagline {
- 	font-family: Patrick Hand SC;
- 	font-size: 65px;
- 	color: #F78733;
+#tagline {
+	font-family: Patrick Hand SC;
+	font-size: 65px;
+	color: #F78733;
+}
 
- }
+#footer {
+	margin-top: 0px;
+	padding-top: 0px;
+	background-color: #6D7993;
+}
 
- #footer {
- 	margin-top: 0px;
- 	padding-top: 0px;
- 	background-color: #6D7993;
- }
+.footer-container {
+	border-top: 8px solid #6D7993;
+}
 
- .footer-container {
- 	border-top: 8px solid #6D7993;
- }
-
- .container {
- 	margin-left: 0px;
- 	margin-right: 0px;
- 	padding-left: 0px;
- 	border-right: 0px;
- }
+.container {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	border-right: 0px;
+}
 
 #missionState {
 	margin-left: 80px;
