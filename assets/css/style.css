@@ -31,6 +31,7 @@ main {
 	height: 950px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
+	border-bottom: : 0px;
 	border-top: 8px solid #6D7993;
 }
 
@@ -39,7 +40,9 @@ main {
 	height: 400px;
 	float: left;
 	color: white;
+	padding-right: 10px;
 }
+
 
 #logo {
 	padding-left: 30px;

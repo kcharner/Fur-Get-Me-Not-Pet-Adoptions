@@ -52,7 +52,8 @@ main {
 #form{
 	margin-left: 20px;
 	margin-top: 20px;
-	padding-left: 0px;
+	padding-left: 0px; 
+	width: 550px;
 
 }
 
