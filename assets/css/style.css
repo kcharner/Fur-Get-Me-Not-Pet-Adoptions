@@ -28,7 +28,7 @@ main {
 	background-color: "brown lighten-4";
 	background-size: 100%;
 	background-repeat: no-repeat;
-	height: 950px;
+	height: 830px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 	border-bottom: : 0px;
@@ -42,7 +42,6 @@ main {
 	color: white;
 	padding-right: 10px;
 }
-
 
 #logo {
 	padding-left: 30px;
