@@ -27,52 +27,48 @@
 		</nav>
 		
 	<!-- jumbotron -->
-	<div class="jumbotron"> 
-		<div id="userPetSearch">
-			<div class="content left-align">
-				<h2 id="h2">Your purrfect pet is waiting!</h2>
-			</div>	
-		</div>	
-			
-	<!--form for user's search parameters-->
-		<form>
-			<div class="container" id="form">
-				<div class="col-lg-6">
-				<label for="zipcode">Your Zipcode Goes Here!</label>
-				<input type="text" class="form-control" id="userZip" placeholder="08820">
+		<div class="jumbotron" id="userPetSearch">
+			<h2 id="h2">Your purrfect pet is waiting!</h2>
+						
+		<!--form for user's search parameters-->
+			<form>
+				<div class="container" id="form">
+					<div class="col-lg-6">
+					<label for="zipcode">Your Zipcode Goes Here!</label>
+					<input type="text" class="form-control" id="userZip" placeholder="08820">
 
-			<div class="dropdown">
-				<label for="sel1" id="catOrDog">What Kind of Pet Are You Looking For?</label>
-				<select class="form-control" id="petType">
-					<option value=1>Cat</option>
-					<option value=2 selected>Dog</option>
-					<option value=3>Show Me Cats & Dogs!</option>
-				</select>
-			</div>
-
-			<div class="dropdown">
-				<label for="sel2">Female or male?</label>
-					<select class="form-control" id="gender">
-						<option value=1>Female</option>
-						<option value=2 selected>Male</option>
-						<option value=3>Show Me Results for Both!</option>
+				<div class="dropdown">
+					<label for="sel1" id="catOrDog">What Kind of Pet Are You Looking For?</label>
+					<select class="form-control" id="petType">
+						<option value=1>Cat</option>
+						<option value=2 >Dog</option>
+						<option value=3 selected>Show Me Cats & Dogs!</option>
 					</select>
-			</div>
-					<br>
-				
-				<button type="submit" class="btn btn-primary" id="submitBtn">Search</button>
 				</div>
-			</div>
-		</form>
-	</div>
+
+				<div class="dropdown">
+					<label for="sel2">Female or male?</label>
+						<select class="form-control" id="gender">
+							<option value=1>Female</option>
+							<option value=2 >Male</option>
+							<option value=3 selected>Show Me Results for Both!</option>
+						</select>
+				</div>
+						<br>
+					
+					<button type="submit" class="btn btn-primary" id="submitBtn">Search</button>
+					</div>
+				</div>
+			</form>
+		</div>
 
 	<!--MAP section for displaying results!-->
 	<section class="col-lg-12">
-		<div class="mapResults" id="results">
+		<div id="yourFurryFuriend!">
 			<h3>Here Are Your Furry Furiends!</h3>
-				<p id="map"></p>
 		</div>
-		<div class="mapResults" id="petResponse"></div>
+		<div class="mapResults" id="petResponse">
+		</div>
 	</section>
 
 	<!-- footer -->
@@ -100,13 +96,52 @@
 	</footer>
 
 
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+
+        <div class="modal-body">
+        <div class="mapResults" id="map"></div>
+          <p>Description.</p>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+
+
+
+
 <!-- link for google Maps API -->
+<script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY&callback=markerMap">
 </script>
 <!-- link to jquery -->
-<script src="https://code.jquery.com/jquery.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- for IE support -->
 <script src="bower_components/es6-promise/es6-promise.auto.min.js"></script> 
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
