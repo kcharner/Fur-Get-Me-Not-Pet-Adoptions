@@ -77,7 +77,7 @@ main {
 }
 
 #map, #map2 {
-  /* width: 50%;*/
+  	width:100%;
    height: 300px;
    background-color: grey;
 }
@@ -146,10 +146,6 @@ main {
 	font-size: 20px;
 }
 
-.content {
-
-}
-
 .headerPet {
 	font-family: Patrick Hand SC;
 	color: #F78733;
@@ -168,3 +164,26 @@ cursor: pointer;
 	margin-top: 100px;
 }
 
+.modal-title {
+	font-family: Patrick Hand SC;
+	color: #F78733;
+	text-align: center;
+}
+
+.petModal {
+	text-align: center;
+	border: 1px solid #6D7993;
+}
+
+#age {
+	font-weight: bold;
+}
+
+#genderOfPet {
+	font-style: italic;
+}
+
+#myModal{
+ width:75%;
+
+}

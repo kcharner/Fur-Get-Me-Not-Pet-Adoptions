@@ -97,21 +97,26 @@
 
 
 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade col-lg-10" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title"></h4>
         </div>
-
-        <div class="modal-body">
-        <div class="mapResults" id="map"></div>
-          <p>Description.</p>
-        </div>
-        
+		<div class="modal-body">
+			<div class="petModal">
+				<p id="age"></p>
+				<p id="genderOfPet"></p>
+				<p id="fullPetProfile"></p>
+				<img id="petPictures">
+			</div>
+			<div class="mapResults" id="map"></div>
+	          <p id="petAddress"></p>
+	        </div>
+	        
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
