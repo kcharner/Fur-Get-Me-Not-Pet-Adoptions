@@ -99,7 +99,7 @@ else {
                             petSorted.petPhone = petData.contact.phone.$t;
                             var petDate = petSorted.petLastUpdate[0];
                             petSorted.updateTimeEpoch = Math.floor(moment(petDate).valueOf());
-                            petSorted.petPics = petData.media.photos.photo[0].$t;
+                            petSorted.petPics = petData.media.photos.photo[2].$t;
                             
                             resultsPreSorted.push(petSorted);    
                 }); // end for each loop
