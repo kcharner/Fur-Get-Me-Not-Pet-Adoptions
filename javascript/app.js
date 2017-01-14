@@ -108,7 +108,7 @@ else {
 
             for (var i = 0; i  < resultSorted.length; i++) {
                
-                 var petContainer = $("<div class='col-md-3 fourAcross'>")
+                 var petContainer = $("<ul class='col-md-3 fourAcross'>")
                  var newPetDiv = $("<div class='petDetes'>");
                  var newPetName = $("<h3 class='headerPet' data-toggle='modal' data-target='#myModal'>");
                  var petImage = $("<img class='img-fluid imagez'>").attr("src", resultSorted[i].petPics).attr("data-address", resultSorted[i].petFullAddress);

@@ -9,26 +9,26 @@
 		<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
 		<link href="https://fonts.googleapis.com/css?family=Raleway|Material+Icons|Patrick+Hand+SC" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
-		
+		<link rel="stylesheet" href="animate.min.css">
 	</head>
 	<body>
 		<!-- nav bar -->
 		<nav class="brown lighten-3" id="header">
 		    <div class="nav-wrapper" id="container">
 		     	<!-- <a href="project1.html"> <p class="brand-logo" id="projectName">Furget-Me-Not Pets</p></a> -->
-		     	<a href="project1.html"> <img src= "assets/images/Logomakr_4KmXl5.png" alt="logo" id="logo">
+		     	<a href="index.html"> <img src= "assets/images/Logomakr_4KmXl5.png" alt="logo" id="logo">
 		    	<ul class="right hide-on-med-and-down"  id="nav-icons">
-		    		<li><a href="project1.html"><i class="material-icons">info_outline</i></a></li>
-		    		<li><a href="searchForm.html"><i class="material-icons">search</i></a></li>
-			        <li><a href="subject.html"><i class="material-icons">subject</i></a></li>
-			        <li><a href="modal.html"><i class="material-icons">email</i></a></li>
+		    		<li><a href="index.html"><i class="material-icons animated bounce">info_outline</i></a></li>
+                    <li><a href="searchForm.html"><i class="material-icons animated zoomIn">search</i></a></li>
+                    <li><a href="subject.html"><i class="material-icons animated hinge">subject</i></a></li>
+                    <li><a href="modal.html"><i class="material-icons animated lightSpeedIn">email</i></a></li>
 		    	</ul>
 		    </div>
 		</nav>
 		
 	<!-- jumbotron -->
 		<div class="jumbotron" id="userPetSearch">
-			<h2 id="h2">Your purrfect pet is waiting!</h2>
+            <h2 id="h2" class="animated rollIn">Your purrfect pet is waiting!</h2>
 						
 		<!--form for user's search parameters-->
 			<form>
@@ -56,7 +56,7 @@
 				</div>
 						<br>
 					
-					<button type="submit" class="btn btn-primary" id="submitBtn">Search</button>
+					<button type="submit" class="btn btn-primary animated infinite pulse" id="submitBtn">Search</button>
 					</div>
 				</div>
 			</form>
