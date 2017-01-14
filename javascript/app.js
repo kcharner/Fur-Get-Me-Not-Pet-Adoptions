@@ -1,12 +1,19 @@
 $(".mapResults").hide(); //hiding map/results section on page-load
+$("#petModal").hide();
+$('section').hide();
 
 $("#submitBtn").on("click", function(){
+    var petSearchVal = $("#userZip").val();
+    
+    if ( petSearchVal != "") {
     event.preventDefault();
     $("#userPetSearch").hide();
-    $('#petResponse').show();
+    $('section').show();
+    $("#petResponse").show();
+    $("#petModal").show();
 
    var petStreet, petCity, petState, petFullAddress, petSearchGen, petSearchType, petQueryURL;
-   var petSearchVal = $("#userZip").val();
+
 
    if ($("#petType")["0"][0].selected == true) {
         petSearchType = "&animal=cat";
@@ -66,24 +73,23 @@ else {
                 var resultsPreSorted = []
                     results.forEach(function(petData){
                         var petSorted= {};
-                            petSorted.petName = petData.name.$t;
+                            petSorted.petName = petData.name.$t.toUpperCase();
                             petSorted.petAge = petData.age.$t;
                             petSorted.petType = petData.animal.$t;
                             petSorted.petGender = petData.sex.$t;
-                            petSorted.petDescription = petData.description.$t;
+                            petSorted.petDescription = petData.description.$t.split(".");
                        
                            
                             petSorted.petStreet = petData.contact.address1.$t;
                             petSorted.petCity = petData.contact.city.$t;
                             petSorted.petState = petData.contact.state.$t;
                             petSorted.petFullAddress =   petSorted.petStreet + ",+" +  petSorted.petCity + ",+" + petSorted.petState ;
-                            
-                            petSorted.petInfo = petSorted.petAge + " " + petSorted.petType + " " + petSorted.petGender + " " + petSorted.petDescription + " " + petSorted.petFullAddress;
+                            petSorted.petLastUpdate = petData.lastUpdate.$t.split("T");
+                            petSorted.petInfo = petSorted.petAge + " " + petSorted.petType + " " + petSorted.petGender + " " + petSorted.petLastUpdate[0];
 
                             petSorted.petEmail = petData.contact.email.$t;
                             petSorted.petPhone = petData.contact.phone.$t;
-                            petSorted.petLastUpdate = petData.lastUpdate.$t.split("T");
-                            var petDate = petSorted.petLastUpdate
+                            var petDate = petSorted.petLastUpdate[0];
                             petSorted.updateTimeEpoch =  Math.floor(moment(petDate).valueOf());
                             petSorted.petPics = petData.media.photos.photo[0].$t;
                             
@@ -95,26 +101,25 @@ else {
                
                  var petContainer = $("<div class='col-md-3 fourAcross'>")
                  var newPetDiv = $("<div class='petDetes'>");
-                 var newPetName = $("<h3 class='headerPet'>")
-                 var petImage = $("<img class='imagez'>").attr("src", resultSorted[i].petPics).attr("data-address", resultSorted[i].petFullAddress);
+                 var newPetName = $("<h3 class='headerPet' data-toggle='modal' data-target='#myModal'>");
+                 var petImage = $("<img class='img-fluid imagez'>").attr("src", resultSorted[i].petPics).attr("data-address", resultSorted[i].petFullAddress);
                     
-                 petContainer.append(newPetDiv).append(newPetName).append(petImage);
+                 petContainer.append(newPetName).append(petImage).append(newPetDiv);
                  var petResults = newPetDiv.text(resultSorted[i].petInfo);
                  var headerPet = newPetName.text(resultSorted[i].petName);
                  $("#petResponse").append(petContainer);
-                 console.log(resultSorted[i].updateTimeEpoch + " " + resultSorted[i].petName);
+                
        }
         }, //AJAX function
     }); // AJAX Request
-
+} //if statement for blank zip
 }); // on click
 
-
-$(document).on("click", ".imagez" , function(){
-    $("#results").show();
+$(document).on("click", ".headerPet" , function(){
+    $("#map").show();
     $("#map").html("");
 
-    var petPin = $('img').data("address").replace(/\s+/g, '') ;
+    var petPin = $(".imagez").data("address").replace(/\s+/g, '') ;
    
     var mapsURL = "https://maps.googleapis.com/maps/api/geocode/json?";
     var mapsKey = "&key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY";
