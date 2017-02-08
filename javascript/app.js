@@ -1,18 +1,25 @@
-$(".mapResults").hide(); //hiding map/results section on page-load
+$(".mapResults").hide();
 $("#petModal").hide();
-$('section').hide();
+$("section").hide();
 
+var resultSorted ;
 $("#submitBtn").on("click", function(){
     var petSearchVal = $("#userZip").val();
     
     if ( petSearchVal != "") {
     event.preventDefault();
     $("#userPetSearch").hide();
-    $('section').show();
+    $("section").show();
     $("#petResponse").show();
     $("#petModal").show();
 
-   var petStreet, petCity, petState, petFullAddress, petSearchGen, petSearchType, petQueryURL;
+   var petStreet;
+   var petCity;
+   var petState;
+   var petFullAddress;
+   var petSearchGen;
+   var petSearchType;
+   var petQueryURL;
 
 
    if ($("#petType")["0"][0].selected == true) {
@@ -83,31 +90,37 @@ else {
                             petSorted.petStreet = petData.contact.address1.$t;
                             petSorted.petCity = petData.contact.city.$t;
                             petSorted.petState = petData.contact.state.$t;
-                            petSorted.petFullAddress =   petSorted.petStreet + ",+" +  petSorted.petCity + ",+" + petSorted.petState ;
+                            petSorted.petModalAddress =  petSorted.petStreet + " " + petSorted.petCity + ", " +petSorted.petState ;
+                            petSorted.petFullAddress = petSorted.petStreet + ",+" + petSorted.petCity + ",+" + petSorted.petState ;
                             petSorted.petLastUpdate = petData.lastUpdate.$t.split("T");
                             petSorted.petInfo = petSorted.petAge + " " + petSorted.petType + " " + petSorted.petGender + " " + petSorted.petLastUpdate[0];
 
                             petSorted.petEmail = petData.contact.email.$t;
                             petSorted.petPhone = petData.contact.phone.$t;
                             var petDate = petSorted.petLastUpdate[0];
-                            petSorted.updateTimeEpoch =  Math.floor(moment(petDate).valueOf());
+                            petSorted.updateTimeEpoch = Math.floor(moment(petDate).valueOf());
                             petSorted.petPics = petData.media.photos.photo[0].$t;
                             
                             resultsPreSorted.push(petSorted);    
                 }); // end for each loop
-            var resultSorted = resultsPreSorted.sort(function(a, b){return a.updateTimeEpoch-b.updateTimeEpoch});
+             resultSorted = resultsPreSorted.sort(function(a, b){return a.updateTimeEpoch-b.updateTimeEpoch});
             // console.log(resultSorted)
-           for (var i = 0; i  < resultSorted.length; i++) {
+
+            for (var i = 0; i  < resultSorted.length; i++) {
                
                  var petContainer = $("<div class='col-md-3 fourAcross'>")
                  var newPetDiv = $("<div class='petDetes'>");
                  var newPetName = $("<h3 class='headerPet' data-toggle='modal' data-target='#myModal'>");
                  var petImage = $("<img class='img-fluid imagez'>").attr("src", resultSorted[i].petPics).attr("data-address", resultSorted[i].petFullAddress);
-                    
-                 petContainer.append(newPetName).append(petImage).append(newPetDiv);
                  var petResults = newPetDiv.text(resultSorted[i].petInfo);
-                 var headerPet = newPetName.text(resultSorted[i].petName);
+                 var headerPet = newPetName.text(resultSorted[i].petName);                 
+                 petContainer.append(newPetName).append(petImage).append(newPetDiv);
                  $("#petResponse").append(petContainer);
+
+//**********MODAL STUFF
+               
+
+
                 
        }
         }, //AJAX function
@@ -118,6 +131,17 @@ else {
 $(document).on("click", ".headerPet" , function(){
     $("#map").show();
     $("#map").html("");
+   var modalName = $(this).html()
+  $(".modal-title").text(modalName);
+     for (var j = 0; j <resultSorted.length; j++) {
+    if (resultSorted[j].petName == modalName){
+      $("#genderOfPet").text(resultSorted[j].petGender);
+      $("#age").text(resultSorted[j].petAge);
+      $("#fullPetProfile").text(resultSorted[j].petDescription);
+      $("#petAddress").text(resultSorted[j].petModalAddress);
+      $("#petPictures").attr("src", resultSorted[j].petPics);
+    }
+  }
 
     var petPin = $(".imagez").data("address").replace(/\s+/g, '') ;
    
@@ -125,7 +149,7 @@ $(document).on("click", ".headerPet" , function(){
     var mapsKey = "&key=AIzaSyB6ABdEM48UdJKrS7oG5F-qs0ZRbll1koY";
     var pinLocation = "&address=" + petPin;
     var mapsQueryURL = mapsURL + pinLocation + mapsKey;
-        console.log(mapsQueryURL);
+       // console.log(mapsQueryURL);
     var gridLat, gridLong ;
 
     $.ajax({
@@ -133,23 +157,30 @@ $(document).on("click", ".headerPet" , function(){
     method: "GET"
     }) //ajax header
 
-    .done(function(mapsData) {
-        gridLat = mapsData.results[0].geometry.location.lat
-        gridLong = mapsData.results[0].geometry.location.lng
+    .done(function petMap(mapsData) {
+        gridLat = mapsData.results[0].geometry.location.lat;
+        gridLong = mapsData.results[0].geometry.location.lng;
+           
            var petMarker= {};
             petMarker.lat = gridLat;
             petMarker.lng = gridLong;
 
             var map = new google.maps.Map(document.getElementById("map"), {
-              zoom: 10,
+              zoom: 12,
               center: petMarker
             });
             var marker = new google.maps.Marker({
-              position: petMarker,
+              position: new google.maps.LatLng(petMarker.lat, petMarker.lng),
+              title: modalName,
               map: map
             });  
+            google.maps.event.trigger(map, 'resize');
       }); //.done function
+
 }); // image on click
+
+
+
 
 function markerMap() {
         var uluru = {lat: -25.363, lng: 131.044};
@@ -161,4 +192,11 @@ function markerMap() {
           position: uluru,
           map: map
         });
-      }
+    }
+    
+
+
+
+
+
+
