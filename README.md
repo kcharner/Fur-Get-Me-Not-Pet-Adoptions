@@ -1,7 +1,8 @@
 # Fur-Get-Me-Not-Pet-Adoptions
 ## Synopsis:
     Our App is designed to be a very easy and simple to use process for finding pets. It is more focused on finding pets that have been in shelters for a long time. We used the Google maps API and the Petfinder API to accomplish this. Aesthetics of the app were made from Bootstrap, materialize, and animation.css.
-<blockquote class="imgur-embed-pub" lang="en" data-id="xKlsO2D"><a href="//imgur.com/xKlsO2D"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+![](http://imgur.com/xKlsO2D)
+
 ## Contributors:
 * [Allen Chen](https://github.com/chenallen93)
 * [Crista Hazel](https://github.com/christahazel)
