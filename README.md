@@ -6,7 +6,7 @@ Fur-Get-Me-Not-Pet-Adoptions is an app designed to highlight shelter cats and do
 
 We created our app by combining the Petfinder API with Google's Geocoding and Javascript APIs to help user's find their purrfect match in their area. First we pulled all results from Petfinder. Next, we used our Google Maps APIs to narrow our search by location and return pets based on the user's zipcode, animal type and gender preferences, and then most importantly by oldest record. To develop our theme, we combined elements from both Bootstrap and Materialize and selected striking and inspiring images from Pexels. Finally, animations and modals were incorporated to make our app more dynamic.
 
-![]()
+![](https://camo.githubusercontent.com/86553bb5a1ec7964e5f004d682c3d631c1e356c0/687474703a2f2f672e7265636f726469742e636f2f595a556d4c54746949662e676966)
 
 ## Contributors:
 
